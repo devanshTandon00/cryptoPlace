@@ -1,0 +1,47 @@
+h1,
+h2,
+h3,
+h4,
+p {
+  padding: 8px;
+}
+
+.footer {
+  width: 100%;
+  background-color: black;
+}
+
+.footer-mainsection {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.footer-maintext {
+  flex: 2;
+  font-family: Satisfy, sans-serif;
+  color: white;
+}
+
+.footer-links {
+  flex: 1;
+  font-family: Satisfy, sans-serif;
+  color: white;
+}
+
+.footer-copyright {
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-mainsection {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footer-mainsection {
+    width: 100%;
+  }
+}
+

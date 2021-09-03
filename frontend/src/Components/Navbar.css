@@ -1,0 +1,68 @@
+.navbar-container {
+  display: flex;
+  border-bottom: 1px solid #c4c4c4;
+  box-shadow: 0px 1px 2px #00000040;
+  padding: 10px;
+  margin-bottom: 1px;
+}
+
+.navbar-container a {
+  color: black;
+  text-decoration: none;
+}
+
+.navbar-logo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  color: black;
+}
+
+.navbar-search {
+  height: 40px;
+  margin: auto 2%; /* margin: Y-val X-val */
+  padding-left: 10px;
+  width: 40%;
+  color: black;
+  font-size: 16px;
+  border: 1px solid #c4c4c4;
+}
+
+.navbar-search::placeholder {
+  color: #bababa;
+}
+
+.navbar-search:focus {
+  outline: none;
+}
+
+.navbar-options {
+  margin: auto 0;
+  margin-left: auto;
+  /* outline: 1px solid black; */
+}
+
+.navbar-options a {
+  margin: auto 10px;
+  font-weight: 500;
+}
+
+.profile-img {
+  vertical-align: bottom;
+  margin: auto 0;
+  text-align: center;
+  content: url('../Icons/user.png');
+  max-width: 21px;
+  max-height: 100%;
+}
+
+.options-text:hover {
+  color: black;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1160px) {
+  .options-text {
+    display: none;
+  }
+}
