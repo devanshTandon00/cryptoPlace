@@ -20,7 +20,7 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
-    "start": "nodemon src/server.js",
+    "start": "nodemon ../backend/server/server.js",
     "dev": "concurrently -n 'server,client' -c'red,blue' \"cd ../backend && nodemon server/server.js\" \"react-scripts start\"",
     "build": "react-scripts build",
     "install-client": "cd src && npm install",
