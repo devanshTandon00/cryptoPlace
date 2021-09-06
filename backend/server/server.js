@@ -6,7 +6,8 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 5050; //step 1
 
-const routes = require('../routes/BlogPost');
+const blogPost = require('../routes/BlogPost');
+const user = require('../routes/User')
 
 const config = require("../config/config.json");
 
@@ -30,8 +31,10 @@ app.use(express.urlencoded({ extended: false }));
 //HTTP request logger
 // app.use(morgan('tiny'));
 
-//Where I determine which route to put the data in (right now the data is in localhost:8080/api)
-app.use('/api', routes);
+//Where I determine which route to put the data in (right now the data is in localhost:8080/api)\
+app.use('/user', user);
+app.use('/blogPost', blogPost);
+
 
 //step 3
 if (process.env.NODE_ENV === 'production') {
