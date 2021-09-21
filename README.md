@@ -21,6 +21,9 @@ Runs the backend server.
 ### `file:class`
 Shortcut to get boilerplate code for class components
 
+### `file:function`
+Shortcut to get boilerplate code for function components
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
