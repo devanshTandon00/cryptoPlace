@@ -13,7 +13,6 @@ import BlogPage from './Pages/BlogPage';
 import TestPage from './Pages/TestPage';
 import UserProfilesPage from './Pages/UserProfilesPage';
 
-
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -34,14 +33,9 @@ export default class App extends Component {
               <Route path='/test' exact component={TestPage} />
               <Route path='/userprofiles' exact component={UserProfilesPage} />
             </Switch>
+            {/* <Footer /> */}
           </div>
         </Router>
-        <footer>
-          {/* <Footer /> */}
-        </footer>
-        {/* <div>
-          <Footer />
-        </div> */}
       </div>
     );
   }

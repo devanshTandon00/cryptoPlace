@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Navbar.css'
+import Input from './Input';
+
 export default class Navbar extends Component {
   state = {  }
   render() { 
@@ -10,8 +12,8 @@ export default class Navbar extends Component {
             CryptoPlace
           </a>
         </div>
-        <input 
-          className='navbar-search'
+        <Input
+          style={{width:'40%', margin:'auto 2%'}}
           placeholder='Search collectibles and accounts'
         />
         <div className='navbar-options'>

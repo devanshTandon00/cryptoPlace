@@ -5,8 +5,12 @@
   background-color: black;
   color: white;
   border-radius: 6px;
-  border: none;
+  border: 1px black solid;
   height: 33px;
   width: 130px;
   float: right;
+}
+
+.button-styling:hover {
+  background-color: rgba(0, 0, 0, 0.8)
 }
