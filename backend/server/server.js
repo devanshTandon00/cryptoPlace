@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const morgan = require('morgan');
+const morgan = require('morgan');
 const path = require('path');
 
 const app = express();
@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //HTTP request logger
-// app.use(morgan('tiny'));
+app.use(morgan('tiny'));
 
 //Where I determine which route to put the data in (right now the data is in localhost:8080/api)
 app.use('/api', routes);
@@ -39,7 +39,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.get('*', (request, response) => {
-  response.send('Hello')
   response.sendFile(path.join(__dirname, '../../frontend/public/index.html'));
 });
 
