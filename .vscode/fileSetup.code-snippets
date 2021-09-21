@@ -1,0 +1,45 @@
+{
+	// Place your application workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+
+	"Class boilerplate code": {
+		"scope": "javascript",
+		"prefix": "file:class",
+		"body": [
+			"import React, { Component } from 'react';",
+			"",
+			"export default class $TM_FILENAME_BASE extends Component {",
+			"\tconstructor(props) {",
+			"\t\tsuper(props);",
+			"\t\tthis.state={};",
+			"\t}",
+			"\trender() {",
+			"\t\treturn (",
+			"\t\t\t<div className='$TM_FILENAME_BASE'>",
+			"\t\t\t</div>",
+			"\t\t);",
+			"\t}",
+			"}"
+		],
+		"description": "Class boilerplate code"
+	},
+    "Function boilerplate code": {
+		"scope": "javascript",
+		"prefix": "file:function",
+		"body": [
+			"import React from 'react';",
+			"",
+			"export default function $TM_FILENAME_BASE(props) {",
+			"\treturn (",
+			"\t\t<div className='$TM_FILENAME_BASE'>",
+			"\t\t</div>",
+			"\t);",
+			"}"
+		],
+		"description": "Class boilerplate code"
+	}
+}
