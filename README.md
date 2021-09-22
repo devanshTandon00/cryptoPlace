@@ -25,6 +25,15 @@ Shortcut to get boilerplate code for class components
 ### `file:function`
 Shortcut to get boilerplate code for function components
 
+### `file:model`
+Shortcut to get boilerplate code for MongoDB Model files
+
+### `file:route`
+Shortcut to get boilerplate code for Route files
+
+### `file:apifunction`
+Shortcut to get boilerplate code for APIFunction files
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
