@@ -3,7 +3,6 @@ import BlogForm from '../Components/BlogForm';
 import { getBlogPosts, addBlogPost, deleteBlogPost, editBlogPost } from '../APIFunctions/BlogPost';
 import { Button, Card, CardTitle, CardText, Jumbotron } from 'reactstrap';
 import './BlogPage.css';
-const axios = require('axios');
 
 export default class BlogPage extends Component {
   constructor(props) {
@@ -12,6 +11,7 @@ export default class BlogPage extends Component {
       title: '',
       body: '',
       posts: [],
+      editOrDelete: '',
     };
   }
 
@@ -44,7 +44,11 @@ export default class BlogPage extends Component {
     if(res){
       this.setState({posts: res});
     }
-  }
+  };
+
+  resetInputs = () => {
+    this.setState({title: '', body: ''});
+  };
 
   // onClick for 'Post' Button to add blog posts
   handleData = async (event) => {
@@ -57,6 +61,7 @@ export default class BlogPage extends Component {
     const res = await addBlogPost(blogPost);
     console.log('res', res);
     this.refreshBlogPostList();
+    this.resetInputs();
   };
 
   displayBlogPosts = (posts) => {
@@ -79,12 +84,17 @@ export default class BlogPage extends Component {
   };
 
   doStuff = async (post) => {
-    //Comment out one or the other, onClick for each blogPost Card
-    //If you want to editStuff, comment out deleteStuff, etc.
-
-    this.editStuff(post);
-    // this.deleteStuff(post);
-  }
+    console.log(this.state.editOrDelete);
+    if(this.state.editOrDelete==='edit'){
+      this.editStuff(post);
+    }
+    else if(this.state.editOrDelete==='delete'){
+      this.deleteStuff(post);
+    }
+    else{
+      console.log('Select the Edit or Delete button to trigger functions');  
+    }
+  };
 
   editStuff = async (post) => {
     console.log('edit stuff', post);
@@ -96,14 +106,19 @@ export default class BlogPage extends Component {
     const res = await editBlogPost(updatedPost);
     console.log('res', res);
     this.refreshBlogPostList();
-  }
+  };
 
   deleteStuff = async (post) => {
     console.log('delete stuff', post);
     const res = await deleteBlogPost(post);
     console.log('res', res);
     this.refreshBlogPostList();
-  }
+  };
+
+  setEditOrDelete = (editOrDelete) => {
+    console.log(editOrDelete);
+    this.setState({editOrDelete});
+  };
 
   render() {
     return (
@@ -132,6 +147,21 @@ export default class BlogPage extends Component {
             onClick={this.handleData}
           >
             Post
+          </Button>
+          <Button
+            color='warning'
+            style={{margin:'8px 0px'}}
+            disabled={!(this.state.editOrDelete !== 'edit')}
+            onClick={()=>this.setEditOrDelete('edit')}
+          >
+            Edit
+          </Button>
+          <Button
+            color='danger'
+            disabled={!(this.state.editOrDelete !== 'delete')}
+            onClick={()=>this.setEditOrDelete('delete')}
+          >
+            Delete
           </Button>
         </div>
         <div className="response-container">

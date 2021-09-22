@@ -4,7 +4,7 @@ import './Input.css'
 export default function Input(props) {
     return (
         <input
-            className='input'
+            className= {props.className || 'input'}
             placeholder={props.placeholder}
             style={props.style}
         />

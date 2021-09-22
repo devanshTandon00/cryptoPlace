@@ -13,7 +13,7 @@ export default class Navbar extends Component {
           </a>
         </div>
         <Input
-          style={{width:'40%', margin:'auto 2%'}}
+          className='navbar-search'
           placeholder='Search collectibles and accounts'
         />
         <div className='navbar-options'>
