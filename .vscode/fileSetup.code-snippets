@@ -27,7 +27,7 @@
 		],
 		"description": "Class boilerplate code"
 	},
-    "Function boilerplate code": {
+  "Function boilerplate code": {
 		"scope": "javascript",
 		"prefix": "file:function",
 		"body": [
@@ -39,6 +39,30 @@
 			"\t\t</div>",
 			"\t);",
 			"}"
+		],
+		"description": "Class boilerplate code"
+	},
+	"MongoDB Model boilerplate code": {
+		"scope": "javascript",
+		"prefix": "file:model",
+		"body": [
+			"const mongoose = require('mongoose');",
+			"const Schema = mongoose.Schema;",
+			"",
+			"const ${TM_FILENAME_BASE}Schema = new Schema(",
+			"\t{",
+			"\t\tsample_element: {",
+			"\t\t\ttype: String",
+			"\t\t},",
+			"\t\tsample_element2: {",
+			"\t\t\tunique: true,",
+			"\t\t\ttype: Array",
+			"\t\t},",
+			"\t},",
+			"\t{ collection: '${TM_FILENAME_BASE}'}",
+			");",
+			"",
+			"module.exports = mongoose.model('${TM_FILENAME_BASE}', ${TM_FILENAME_BASE}Schema);"
 		],
 		"description": "Class boilerplate code"
 	}
