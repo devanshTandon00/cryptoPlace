@@ -1,37 +1,60 @@
 const express = require("express");
 const router = express.Router();
 const BlogPost = require("../models/BlogPost");
-//routes
-router.get("/", (req, res) => {
-  BlogPost.find({})
-    .then((data) => {
-      console.log("data");
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error");
-    });
+
+// GET
+router.get("/getBlogPosts", (req, res) => {
+  BlogPost.find({}).then(blogPosts => res.json(blogPosts));
 });
 
-router.get("/name", (req, res) => {
-  const data = { username: "testcase", age: 2 };
-  res.json(data);
-});
+// ADD
+router.post("/addBlogPost", (req, res) => {
+  const newBlogPost = new BlogPost({
+    title: req.body.title,
+    body: req.body.body,
+  });
 
-//Main function to save data to db
-router.post("/save", (req, res) => {
-  console.log("Request Body: ", req.body);
-  const data = req.body;
-  const newBlogPost = new BlogPost(data);
-  newBlogPost.save((error) => {
-    if (error) {
-      res.status(500).json({ msg: "error!" });
-    } else {
-      res.status(200).json({
-        msg: "No error! Your message has been saved! 200 by default!",
-      });
+  BlogPost.create(newBlogPost, (err, blogPost) => {
+    if(err){
+      return res.send(err);
     }
+    return res.json(blogPost);
   });
 });
+
+// EDIT
+router.post('/editBlogPost', (req, res) => {
+  BlogPost.findById({_id: req.body._id})
+    .then(blogPost => {
+      blogPost.title = req.body.title || blogPost.title,
+      blogPost.body = req.body.body || blogPost.body,
+      blogPost.save()
+        .then(ret =>{
+          res.json(ret);
+        })
+        .catch(err =>{
+          res.send(err);
+        });
+    })
+    .catch(err=>{
+      res.send({err, message: "blogPost not found"});
+    })
+});
+
+
+// DELETE
+router.post('/deleteBlogPost', (req, res) =>{
+  BlogPost.deleteOne({ _id: req.body._id }, (err, blogPost) => {
+    if(err){
+      return res.send(err);
+    }
+    return res.json(blogPost);
+  })
+})
+
+// router.get("/name", (req, res) => {
+//   const data = { username: "testcase", age: 2 };
+//   res.json(data);
+// });
 
 module.exports = router;
