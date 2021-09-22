@@ -6,6 +6,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 5050; //step 1
 
+// Add your new DB Collection Routes here
 const BlogPostRoutes = require('../routes/BlogPost');
 
 const config = require("../config/config.json");
@@ -31,6 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(morgan('tiny'));
 
 //Where I determine which route to put the data in (right now the data is in localhost:8080/api)
+//Use those added routes here, i.e. app.use('/api', YourRoutes);
 app.use('/api', BlogPostRoutes);
 
 //step 3
