@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BlogForm from '../Components/BlogForm';
+import { getBlogPosts, addBlogPost, deleteBlogPost, editBlogPost } from '../APIFunctions/BlogPost';
 import { Button, Card, CardTitle, CardText, Jumbotron } from 'reactstrap';
 import './BlogPage.css';
 const axios = require('axios');
@@ -15,20 +16,7 @@ export default class BlogPage extends Component {
   }
 
   componentDidMount = () => {
-    this.getBlogPosts();
-  };
-
-  getBlogPosts = () => {
-    axios
-      .get('/api')
-      .then((response) => {
-        const data = response.data;
-        console.log('Data retrieved: ', response.data);
-        this.setState({ posts: data });
-      })
-      .catch((error) => {
-        console.log('error: ', error);
-      });
+    this.refreshBlogPostList();
   };
 
   checkConsole = () => {
@@ -51,21 +39,24 @@ export default class BlogPage extends Component {
     return this.state.title !== '' && this.state.body !== '';
   };
 
-  handleData = (event) => {
+  refreshBlogPostList = async () => {
+    const res = await getBlogPosts();
+    if(res){
+      this.setState({posts: res});
+    }
+  }
+
+  // onClick for 'Post' Button to add blog posts
+  handleData = async (event) => {
     event.preventDefault();
-    const payload = {
+    console.log('event', event);
+    const blogPost = {
       title: this.state.title,
-      body: this.state.body,
-    };
-    axios({ url: '/api/save', method: 'POST', data: payload })
-      .then(() => {
-        console.log('data SENT!');
-        this.setState({ title: '', body: '' });
-        this.getBlogPosts();
-      })
-      .catch(() => {
-        console.log('error');
-      });
+      body: this.state.body
+    }
+    const res = await addBlogPost(blogPost);
+    console.log('res', res);
+    this.refreshBlogPostList();
   };
 
   displayBlogPosts = (posts) => {
@@ -73,7 +64,12 @@ export default class BlogPage extends Component {
       return null;
     }
     return posts.map((post, index) => (
-      <Card body key={index}>
+      <Card
+        body
+        key={index}
+        onClick={()=>{this.doStuff(post)}}
+        className='card-thing'
+      >
         <CardTitle>
           <strong>{post.title}</strong>
         </CardTitle>
@@ -81,6 +77,34 @@ export default class BlogPage extends Component {
       </Card>
     ));
   };
+
+  doStuff = async (post) => {
+    //Comment out one or the other, onClick for each blogPost Card
+    //If you want to editStuff, comment out deleteStuff, etc.
+
+    this.editStuff(post);
+    // this.deleteStuff(post);
+  }
+
+  editStuff = async (post) => {
+    console.log('edit stuff', post);
+    const updatedPost = {
+      _id: post._id,
+      title: 'Blog Post Title',
+      body: 'Random Number: ' + Math.random()*100
+    }
+    const res = await editBlogPost(updatedPost);
+    console.log('res', res);
+    this.refreshBlogPostList();
+  }
+
+  deleteStuff = async (post) => {
+    console.log('delete stuff', post);
+    const res = await deleteBlogPost(post);
+    console.log('res', res);
+    this.refreshBlogPostList();
+  }
+
   render() {
     return (
       <div className="blogPage">
@@ -101,7 +125,6 @@ export default class BlogPage extends Component {
             body={this.state.body}
             updateTitle={this.updateTitle}
             updateBody={this.updateBody}
-            handleData={this.handleData}
           />
           <Button
             id="blogForm-button"
