@@ -41,6 +41,7 @@ export default class App extends Component {
               <Route path="/login" exact component={Login} />
               <Route path="/register" exact component={SignUp} />
             </Switch>
+            {/* <Footer /> */}
           </div>
         </Router>
         <footer>{/* <Footer /> */}</footer>

@@ -61,8 +61,14 @@
   text-decoration: none;
 }
 
-@media screen and (max-width: 1160px) {
-  .options-text {
+@media screen and (max-width: 1300px) {
+  .navbar-options .options-text {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .navbar-search {
     display: none;
   }
 }
