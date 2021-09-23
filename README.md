@@ -2,8 +2,9 @@
 1. Clone the application to local
 2. `cd frontend` and `npm install`. Then run, `cd backend` and `npm install`.
 3. Now, from the `frontend` folder, run `npm run dev` to access `localhost:3000` and `localhost:5050`.
-4. Set up config for the MongoDB cluster. To do so, add a config.json file under /src/Config. config.example.json is a template that you can copy. Simply add the url instead of the plethora of X's.
-4. Should be good to go from there. Have fun coding! ^^b
+4. Set up config for the MongoDB cluster. To do so, add a config.json file under backend/src/Config. config.example.json is a template that you can copy. Simply add the url instead of the plethora of X's.
+5. Please make sure the `Insert Final Newline` setting is enabled in VS Code. Navigate to File > Preferences > Settings, then search for `Insert Final Newline`.
+6. Should be good to go from there. Have fun coding! ^^b
 
 # Commands That Are Good to Know
 
@@ -20,6 +21,18 @@ Runs the backend server.
 
 ### `file:class`
 Shortcut to get boilerplate code for class components
+
+### `file:function`
+Shortcut to get boilerplate code for function components
+
+### `file:model`
+Shortcut to get boilerplate code for MongoDB Model files
+
+### `file:route`
+Shortcut to get boilerplate code for Route files
+
+### `file:apifunction`
+Shortcut to get boilerplate code for APIFunction files
 
 # Getting Started with Create React App
 

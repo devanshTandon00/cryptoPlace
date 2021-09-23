@@ -1,12 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const morgan = require('morgan');
+const morgan = require('morgan');
 const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5050; //step 1
 
-const routes = require('../routes/BlogPost');
+// Add your new DB Collection Routes here
+const BlogPostRoutes = require('../routes/BlogPost');
 
 const config = require("../config/config.json");
 
@@ -28,10 +29,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //HTTP request logger
-// app.use(morgan('tiny'));
+app.use(morgan('tiny'));
 
 //Where I determine which route to put the data in (right now the data is in localhost:8080/api)
-app.use('/api', routes);
+//Use those added routes here, i.e. app.use('/api', YourRoutes);
+app.use('/api', BlogPostRoutes);
 
 //step 3
 if (process.env.NODE_ENV === 'production') {
@@ -39,7 +41,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.get('*', (request, response) => {
-  response.send('Hello')
   response.sendFile(path.join(__dirname, '../../frontend/public/index.html'));
 });
 
