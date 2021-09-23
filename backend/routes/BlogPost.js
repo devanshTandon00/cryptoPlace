@@ -1,6 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const BlogPost = require('../models/BlogPost')
+const BlogPost = require("../models/BlogPost");
+
+router.get("/", (req, res) => {
+  console.log("data");
+  BlogPost.find({})
+    .then((data) => {
+      console.log("data");
+      res.json(data);
+    })
+    .catch((error) => {
+      console.log("error" + data);
+    });
+});
 
 // GET
 router.get('/getBlogPosts', (req, res) => {
@@ -22,7 +34,7 @@ router.post('/addBlogPost', (req, res) => {
   });
 });
 
-// EDIT
+
 router.post('/editBlogPost', (req, res) => {
   BlogPost.findById({_id: req.body._id})
     .then(blogPost => {

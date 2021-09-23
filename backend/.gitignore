@@ -3,6 +3,9 @@
 # config
 /config/config.json
 
+# env
+.env
+
 # dependencies
 /node_modules
 /.pnp

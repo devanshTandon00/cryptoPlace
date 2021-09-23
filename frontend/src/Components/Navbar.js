@@ -30,7 +30,7 @@ export default class Navbar extends Component {
             Manage Account
           </a>
           <a href='/profile'>
-            <img className="profile-img"/>
+            <img className="profile-img" alt="unable to load"/>
           </a>
         </div>    
       </div>
