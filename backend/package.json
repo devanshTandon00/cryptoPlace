@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "dependencies": {
     "bcrypt": "^5.0.1",
-    "express": "^4.17.1",
+    "dotenv": "^10.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.7",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "morgan": "^1.10.0"
   },
   "scripts": {
     "start": "nodemon server/server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
 }

@@ -1,7 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # config
-/src/Config/config.json
+/config/config.json
+
+# env
+.env
 
 # dependencies
 /node_modules

@@ -16,18 +16,18 @@ export default class Footer extends Component {
 
         <div className = 'footer-links'>
           <h3>Links</h3>
-            <p><a href="#">Link 1</a></p>
-            <p><a href="#">Link 2</a></p>
-            <p><a href="#">Link 3</a></p>
-            <p><a href="#">Link 4</a></p>
+            <p><a href="/home">Link 1</a></p>
+            <p><a href="/home">Link 2</a></p>
+            <p><a href="/home">Link 3</a></p>
+            <p><a href="/home">Link 4</a></p>
         </div>
 
         <div className = 'footer-links'>
           <h3>Links</h3>
-            <p><a href="#">Link 1</a></p>
-            <p><a href="#">Link 2</a></p>
-            <p><a href="#">Link 3</a></p>
-            <p><a href="#">Link 4</a></p>
+            <p><a href="/home">Link 1</a></p>
+            <p><a href="/home">Link 2</a></p>
+            <p><a href="/home">Link 3</a></p>
+            <p><a href="/home">Link 4</a></p>
         </div>
 
       </div>
