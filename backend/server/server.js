@@ -7,19 +7,17 @@ const dotenv = require("dotenv").config();
 const cors = require("cors");
 
 const app = express();
-const PORT = process.env.PORT; //step 1
-
-
-const user = require("../routes/User");
+const PORT = process.env.PORT || 5050;
 
 // Add your new DB Collection Routes here
 const BlogPostRoutes = require('../routes/BlogPost');
+const user = require("../routes/User");
 
+// process.env vars are more for deployment later, config is used for local dev
 const config = require("../config/config.json");
 
 //connect mongoDB with mongoose
-mongoose.connect(process.env.DB_URL, {
-  //step 2
+mongoose.connect(process.env.DB_URL || config.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -40,12 +38,10 @@ app.use(cors());
 
 app.use(morgan("tiny"));
 
-//Where I determine which route to put the data in (right now the data is in localhost:8080/api)\
-app.use("/user", user);
-
 //Where I determine which route to put the data in (right now the data is in localhost:8080/api)
 //Use those added routes here, i.e. app.use('/api', YourRoutes);
 app.use('/api', BlogPostRoutes);
+app.use("/user", user);
 
 
 //step 3
