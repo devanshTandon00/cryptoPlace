@@ -4,7 +4,8 @@
 2. `cd frontend` and `npm install`. Then run, `cd backend` and `npm install`.
 3. Now, from the `frontend` folder, run `npm run dev` to access `localhost:3000` and `localhost:5050`.
 4. Set up config for the MongoDB cluster. To do so, add a config.json file under /src/Config. config.example.json is a template that you can copy. Simply add the url instead of the plethora of X's.
-5. Should be good to go from there. Have fun coding! ^^b
+5. Please make sure the `Insert Final Newline` setting is enabled in VS Code. Navigate to File > Preferences > Settings, then search for `Insert Final Newline`.
+6. Should be good to go from there. Have fun coding! ^^b
 
 # Commands That Are Good to Know
 
