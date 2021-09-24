@@ -9,23 +9,23 @@ import './ManageAccountPage.css';
 export default class ManageAccountPage extends Component {
   constructor(props) {
     super(props);
-    this.state={};
+    this.state = {};
   }
   render() {
     return (
       <div className='ManageAccountPage'>
-        <Banner title='Manage Account'/>
+        <Banner title='Manage Account' />
         <div className='manage-account-content'>
           <Avatar
             style={{
-              margin:'auto',
-              width: '100px', 
+              margin: 'auto',
+              width: '100px',
               height: '100px',
-              backgroundColor:'black'
+              backgroundColor: 'black'
             }}
             src='placeholder'
           />
-          <div style={{display: 'flex', justifyContent: 'center'}}>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <button
               style={{
                 color: '#bababa',
@@ -35,21 +35,21 @@ export default class ManageAccountPage extends Component {
                 backgroundColor: 'white',
                 border: 'none'
               }}
-              onClick={()=>console.log("hi")}
+              onClick={() => console.log("hi")}
             >
               Edit
             </button>
           </div>
           <form>
-            <Label title='Name'/>
-            <Input placeholder='Bobby Brown'/>
-            <div style={{marginBottom:'25px'}}/>
-            <Label title='Email Address'/>
-            <Input placeholder='Bobby123@gmail.com'/>
-            <div style={{marginBottom:'25px'}}/>
+            <Label title='Name' />
+            <Input placeholder='Bobby Brown' />
+            <div style={{ marginBottom: '25px' }} />
+            <Label title='Email Address' />
+            <Input placeholder='Bobby123@gmail.com' />
+            <div style={{ marginBottom: '25px' }} />
           </form>
           <Button
-            onClick={()=>{console.log('hi')}}
+            onClick={() => { console.log('hi') }}
             label={'Submit'}
           />
         </div>

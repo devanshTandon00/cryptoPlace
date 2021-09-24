@@ -1,6 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import Banner from '../Banner';
+import Button from '../Button';
+import Input from '../Input';
+import Label from '../Label';
+
 
 export default function Login() {
   const history = useHistory();
@@ -55,10 +60,32 @@ export default function Login() {
   //   }, []);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="username"></input>
-      <input type="password" placeholder="password"></input>
-      <input type="submit" value="submit"></input>
-    </form>
+
+    <div className='Login'>
+
+      {/* <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="username"></input>
+        <input type="password" placeholder="password"></input>
+        <input type="submit" value="submit"></input>
+      </form> */}
+
+
+
+      <Banner title='Login' />
+      <div className='manage-account-content'>
+        <form>
+          <Label title='Email' />
+          <Input placeholder='Bobby123@gmail.com' />
+          <div style={{ marginBottom: '25px' }} />
+          <Label title='Password' />
+          <Input placeholder='Password' />
+          <div style={{ marginBottom: '25px' }} />
+        </form>
+        <Button
+          onClick={() => { console.log('hi') }}
+          label={'Submit'}
+        />
+      </div>
+    </div>
   );
 }

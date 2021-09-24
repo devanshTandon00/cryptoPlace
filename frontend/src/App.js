@@ -12,6 +12,7 @@ import OtherPage from "./Pages/OtherPage";
 import BlogPage from "./Pages/BlogPage";
 import TestPage from "./Pages/TestPage";
 import UserProfilesPage from "./Pages/UserProfilesPage";
+import CreateCollectiblePage from "./Pages/CreateCollectiblePage";
 import Login from "./Components/Authentication/Login";
 import SignUp from "./Components/Authentication/SignUp";
 
@@ -38,6 +39,7 @@ export default class App extends Component {
               <Route path="/blog-page" exact component={BlogPage} />
               <Route path="/test" exact component={TestPage} />
               <Route path="/userprofiles" exact component={UserProfilesPage} />
+              <Route path="/create-collectible" exact component={CreateCollectiblePage} />
               <Route path="/login" exact component={Login} />
               <Route path="/register" exact component={SignUp} />
             </Switch>
