@@ -12,7 +12,16 @@
     color: #bababa;
   }
   
+  .input:hover {
+    border: 1px solid #afafaf;
+  }
+
   .input:focus {
     outline: none;
+    border: 1px solid black;
   }
   
+  input[type='password'] {
+    font: 'Squared';
+    font-size: 20px;
+  }
