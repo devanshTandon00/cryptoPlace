@@ -1,12 +1,12 @@
 import React from "react";
 import { useState } from "react";
 // import { useHistory } from "react-router-dom";
-import Banner from '../Banner';
-import Button from '../Button';
-import Input from '../Input';
-import Label from '../Label';
+import Banner from "../Banner";
+import Button from "../Button";
+import Input from "../Input";
+import Label from "../Label";
 
-export default function SignUp() {
+export default function Register() {
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e) => {
@@ -45,36 +45,29 @@ export default function SignUp() {
         <input type="submit" value="register"></input>
       </form> */}
 
-
-      <div className='Register'>
-
+      <div className="Register">
         {/* <form onSubmit={handleSubmit}>
   <input type="text" placeholder="username"></input>
   <input type="password" placeholder="password"></input>
   <input type="submit" value="submit"></input>
 </form> */}
 
-
-
-        <Banner title='Register' />
-        <div className='manage-account-content'>
-          {success ? <h5> Successfully registered! </h5> : ''}
-          <div style={{ marginBottom: '25px' }} />
+        <Banner title="Register" />
+        <div className="manage-account-content">
+          {success ? <h5> Successfully registered! </h5> : ""}
+          <div style={{ marginBottom: "25px" }} />
           <form onSubmit={handleSubmit}>
-            <Label title='Username' />
+            <Label title="Username" />
             <Input />
-            <div style={{ marginBottom: '25px' }} />
-            <Label title='Email' />
+            <div style={{ marginBottom: "25px" }} />
+            <Label title="Email" />
             <Input />
-            <div style={{ marginBottom: '25px' }} />
-            <Label title='Password' />
-            <Input type='password' />
-            <div style={{ marginBottom: '25px' }} />
-            <Button
-              label={'Submit'}
-            />
+            <div style={{ marginBottom: "25px" }} />
+            <Label title="Password" />
+            <Input type="password" />
+            <div style={{ marginBottom: "25px" }} />
+            <Button label={"Submit"} />
           </form>
-
         </div>
       </div>
     </>
