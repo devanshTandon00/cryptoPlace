@@ -75,10 +75,10 @@ export default function Login() {
       <div className='manage-account-content'>
         <form>
           <Label title='Email' />
-          <Input placeholder='Bobby123@gmail.com' />
+          <Input />
           <div style={{ marginBottom: '25px' }} />
           <Label title='Password' />
-          <Input placeholder='Password' />
+          <Input />
           <div style={{ marginBottom: '25px' }} />
         </form>
         <Button
