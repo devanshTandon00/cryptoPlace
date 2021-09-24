@@ -61,6 +61,9 @@ export default function SignUp() {
             <Label title='Email' />
             <Input placeholder='Bobby123@gmail.com' />
             <div style={{ marginBottom: '25px' }} />
+            <Label title='Username' />
+            <Input placeholder='Bobby123' />
+            <div style={{ marginBottom: '25px' }} />
             <Label title='Password' />
             <Input placeholder='Password' />
             <div style={{ marginBottom: '25px' }} />
