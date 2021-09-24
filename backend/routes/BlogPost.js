@@ -2,18 +2,6 @@ const express = require('express');
 const router = express.Router();
 const BlogPost = require("../models/BlogPost");
 
-router.get("/", (req, res) => {
-  console.log("data");
-  BlogPost.find({})
-    .then((data) => {
-      console.log("data");
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error" + data);
-    });
-});
-
 // GET
 router.get('/getBlogPosts', (req, res) => {
   BlogPost.find({}).then(blogPosts => res.json(blogPosts));
@@ -27,38 +15,38 @@ router.post('/addBlogPost', (req, res) => {
   });
 
   BlogPost.create(newBlogPost, (err, blogPost) => {
-    if(err){
+    if (err) {
       return res.send(err)
     }
     return res.json(blogPost);
   });
 });
 
-
+// EDIT
 router.post('/editBlogPost', (req, res) => {
-  BlogPost.findById({_id: req.body._id})
+  BlogPost.findById({ _id: req.body._id })
     .then(blogPost => {
       blogPost.title = req.body.title || blogPost.title,
-      blogPost.body = req.body.body || blogPost.body,
-      blogPost.save()
-        .then(ret => {
-          res.json(ret);
-        })
-        .catch(err => {
-          res.send(err);
-        }
-      );
+        blogPost.body = req.body.body || blogPost.body,
+        blogPost.save()
+          .then(ret => {
+            res.json(ret);
+          })
+          .catch(err => {
+            res.send(err);
+          }
+          );
     })
     .catch(err => {
-      res.send({err, message: 'BlogPost not found'});
+      res.send({ err, message: 'BlogPost not found' });
     }
-  )
+    )
 });
 
 // DELETE
 router.post('/deleteBlogPost', (req, res) => {
-  BlogPost.deleteOne({ _id: req.body._id}, (err, blogPost) => {
-    if(err) {
+  BlogPost.deleteOne({ _id: req.body._id }, (err, blogPost) => {
+    if (err) {
       return res.send(err);
     }
     return res.json(blogPost);
