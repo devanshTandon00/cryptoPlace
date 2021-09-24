@@ -3,9 +3,9 @@ import './Navbar.css'
 import Input from './Input';
 
 export default class Navbar extends Component {
-  state = {  }
-  render() { 
-    return ( 
+  state = {}
+  render() {
+    return (
       <div className='navbar-container'>
         <div className='navbar-logo'>
           <a href='/' className='options-text'>
@@ -17,7 +17,7 @@ export default class Navbar extends Component {
           placeholder='Search collectibles and accounts'
         />
         <div className='navbar-options'>
-         <a href='/blog-page' className='options-text'>
+          <a href='/blog-page' className='options-text'>
             Blog Page
           </a>
           <a href='/browse' className='options-text'>
@@ -29,10 +29,16 @@ export default class Navbar extends Component {
           <a href='/manage-account' className='options-text'>
             Manage Account
           </a>
-          <a href='/profile'>
-            <img className="profile-img" alt="unable to load"/>
+          <a href='/register' className='options-text'>
+            R
           </a>
-        </div>    
+          <a href='/login' className='options-text'>
+            L
+          </a>
+          <a href='/profile'>
+            <img className="profile-img" alt="unable to load" />
+          </a>
+        </div>
       </div>
     );
   }

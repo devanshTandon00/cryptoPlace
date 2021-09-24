@@ -7,17 +7,17 @@ import Input from '../Input';
 import Label from '../Label';
 
 export default function SignUp() {
-  const [success, setSucess] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    console.log(form[0].value);
+    // console.log(form[0].value);
 
     const user = {
       username: form[0].value,
-      password: form[1].value,
-      email: form[2].value,
+      email: form[1].value,
+      password: form[2].value,
     };
 
     fetch("/user/register", {
@@ -29,7 +29,8 @@ export default function SignUp() {
       body: JSON.stringify(user),
     })
       .then((res) => {
-        if (res.status === 200) setSucess(true);
+        if (res.status === 200) setSuccess(true);
+        form.reset();
       })
       .catch((error) => alert(error.message));
   };
@@ -57,21 +58,23 @@ export default function SignUp() {
 
         <Banner title='Register' />
         <div className='manage-account-content'>
-          <form>
-            <Label title='Email' />
-            <Input />
-            <div style={{ marginBottom: '25px' }} />
+          {success ? <h5> Successfully registered! </h5> : ''}
+          <div style={{ marginBottom: '25px' }} />
+          <form onSubmit={handleSubmit}>
             <Label title='Username' />
             <Input />
             <div style={{ marginBottom: '25px' }} />
-            <Label title='Password' />
+            <Label title='Email' />
             <Input />
             <div style={{ marginBottom: '25px' }} />
+            <Label title='Password' />
+            <Input type='password' />
+            <div style={{ marginBottom: '25px' }} />
+            <Button
+              label={'Submit'}
+            />
           </form>
-          <Button
-            onClick={() => { console.log('hi') }}
-            label={'Submit'}
-          />
+
         </div>
       </div>
     </>

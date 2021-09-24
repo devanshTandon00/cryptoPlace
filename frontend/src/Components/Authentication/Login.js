@@ -73,18 +73,15 @@ export default function Login() {
 
       <Banner title='Login' />
       <div className='manage-account-content'>
-        <form>
-          <Label title='Email' />
+        <form onSubmit={handleSubmit}>
+          <Label title='Username' />
           <Input />
           <div style={{ marginBottom: '25px' }} />
           <Label title='Password' />
-          <Input />
+          <Input type='password' />
           <div style={{ marginBottom: '25px' }} />
+          <Button label={'Submit'} />
         </form>
-        <Button
-          onClick={() => { console.log('hi') }}
-          label={'Submit'}
-        />
       </div>
     </div>
   );
