@@ -18,9 +18,9 @@
   color: black;
 }
 
-.navbar-search {
+/* .navbar-search {
   height: 40px;
-  margin: auto 2%; /* margin: Y-val X-val */
+  margin: auto 2%;
   padding-left: 10px;
   width: 40%;
   color: black;
@@ -34,7 +34,7 @@
 
 .navbar-search:focus {
   outline: none;
-}
+} */
 
 .navbar-options {
   margin: auto 0;

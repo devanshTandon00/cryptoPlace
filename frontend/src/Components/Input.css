@@ -25,3 +25,8 @@
     font: 'Squared';
     font-size: 20px;
   }
+
+  input[type='navbar-search'] {
+    margin: auto 2%; /* margin: Y-val X-val */
+    width: 40%;
+  }
