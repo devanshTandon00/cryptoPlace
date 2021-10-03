@@ -1,11 +1,9 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import Banner from '../Banner';
-import Button from '../Button';
-import Input from '../Input';
-import Label from '../Label';
-
+import Button from "../Button";
+import Input from "../Input";
+import Label from "../Label";
 
 export default function Login() {
   const history = useHistory();
@@ -14,6 +12,7 @@ export default function Login() {
     e.preventDefault();
 
     const form = e.target;
+
     const user = {
       username: form[0].value,
       password: form[1].value,
@@ -37,50 +36,48 @@ export default function Login() {
       .then((data) => {
         console.log("data", data);
         localStorage.setItem("token", data.token);
+        console.log(data.token + "token");
         history.push("/");
       })
       .catch((error) => alert("incorrect username or password"));
   };
 
-  //   useEffect(() => {
-  //     fetch("/isUserAuth", {
-  //       headers: {
-  //         "x-access-token": localStorage.getItem("token"),
-  //       },
-  //     })
-  //       .then((res) => {
-  //         console.log(res, res.json(), localStorage.getItem("token"));
-  //         return res.json();
-  //       })
-  //       .then((data) => {
-  //         console.log(data);
-  //         return data.isLoggedIn ? history.push("/") : null;
-  //       })
-  //       .catch((error) => alert(error.message));
-  //   }, []);
+  useEffect(() => {
+    fetch("/isUserAuth", {
+      headers: {
+        "x-access-token": localStorage.getItem("token"),
+      },
+    })
+      .then(async (res) => {
+        try {
+          const data = await res.json();
+          console.log("response data?", data);
+          return data;
+        } catch (error) {
+          console.log("Error happened here!");
+          console.error(error);
+        }
+        // console.log(res, localStorage.getItem("token"));
+        // return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        return data.isLoggedIn ? history.push("/") : null;
+      })
+      .catch((error) => alert(error.message));
+  }, []);
 
   return (
-
-    <div className='Login'>
-
-      {/* <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="username"></input>
-        <input type="password" placeholder="password"></input>
-        <input type="submit" value="submit"></input>
-      </form> */}
-
-
-
-      <Banner title='Login' />
-      <div className='manage-account-content'>
+    <div className="Login">
+      <div className="manage-account-content">
         <form onSubmit={handleSubmit}>
-          <Label title='Username' />
-          <Input />
-          <div style={{ marginBottom: '25px' }} />
-          <Label title='Password' />
-          <Input type='password' />
-          <div style={{ marginBottom: '25px' }} />
-          <Button label={'Submit'} />
+          <Label title="Username" />
+          <Input type="text" required />
+          <div style={{ marginBottom: "25px" }} />
+          <Label title="Password" />
+          <Input type="password" required />
+          <div style={{ marginBottom: "25px" }} />
+          <Button label={"Submit"} />
         </form>
       </div>
     </div>

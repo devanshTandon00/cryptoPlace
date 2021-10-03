@@ -17,6 +17,7 @@ function verifyJwt(req, res, next) {
         });
 
       console.log(decoded, "decoded");
+
       req.user = {};
       req.user.id = decoded.id;
       req.user.username = decoded.username;
@@ -110,7 +111,7 @@ router.post("/login", async (req, res) => {
         }
       );
     } else {
-      return res.json({
+      return res.status(400).json({
         message: "Invalid username or password",
       });
     }
