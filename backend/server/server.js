@@ -11,7 +11,9 @@ const PORT = process.env.PORT || 5050;
 
 // Add your new DB Collection Routes here
 const BlogPostRoutes = require('../routes/BlogPost');
+const CollectibleRoutes = require('../routes/Collectible');
 const user = require("../routes/User");
+
 
 // process.env vars are more for deployment later, config is used for local dev
 const config = require("../config/config.json");
@@ -41,6 +43,7 @@ app.use(morgan("tiny"));
 //Where I determine which route to put the data in (right now the data is in localhost:8080/api)
 //Use those added routes here, i.e. app.use('/api', YourRoutes);
 app.use('/api', BlogPostRoutes);
+app.use('/api', CollectibleRoutes);
 app.use("/user", user);
 
 

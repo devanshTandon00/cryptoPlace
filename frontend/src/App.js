@@ -10,6 +10,7 @@ import HomePage from "./Pages/HomePage";
 import ManageAccountPage from "./Pages/ManageAccountPage";
 import OtherPage from "./Pages/OtherPage";
 import BlogPage from "./Pages/BlogPage";
+import BrowsePage from "./Pages/BrowsePage";
 import TestPage from "./Pages/TestPage";
 import UserProfilesPage from "./Pages/UserProfilesPage";
 import CreateCollectiblePage from "./Pages/CreateCollectiblePage";
@@ -37,6 +38,7 @@ export default class App extends Component {
               />
               <Route path="/other-page" exact component={OtherPage} />
               <Route path="/blog-page" exact component={BlogPage} />
+              <Route path="/browse" exact component={BrowsePage} />
               <Route path="/test" exact component={TestPage} />
               <Route path="/userprofiles" exact component={UserProfilesPage} />
               <Route

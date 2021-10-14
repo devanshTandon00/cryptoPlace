@@ -1,0 +1,44 @@
+.BrowsePage {
+
+}
+
+.browse-options {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #c4c4c4;
+  width: 90%;
+  margin: 10px auto;
+  background: #FAFAFA;
+  padding: 8px;
+}
+
+.browse-main {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #c4c4c4;
+  width: 90%;
+  max-width: 90%;
+  margin: auto;
+  background: #FAFAFA;
+  padding-bottom: 1%;
+}
+
+.browse-results {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 21px;
+  color: black;
+  align-self: center;
+}
+
+.browse-dropdowns {
+  justify-content: flex-end;
+}
+
+.options-spacer {
+  max-width: 60%;
+  border: 1px solid red;
+  width: 60%;
+}

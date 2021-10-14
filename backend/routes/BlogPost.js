@@ -26,16 +26,16 @@ router.post('/addBlogPost', (req, res) => {
 router.post('/editBlogPost', (req, res) => {
   BlogPost.findById({ _id: req.body._id })
     .then(blogPost => {
-      blogPost.title = req.body.title || blogPost.title,
-        blogPost.body = req.body.body || blogPost.body,
-        blogPost.save()
-          .then(ret => {
-            res.json(ret);
-          })
-          .catch(err => {
-            res.send(err);
-          }
-          );
+      blogPost.title = req.body.title || blogPost.title;
+      blogPost.body = req.body.body || blogPost.body;
+      blogPost.save()
+        .then(ret => {
+          res.json(ret);
+        })
+        .catch(err => {
+          res.send(err);
+        }
+        );
     })
     .catch(err => {
       res.send({ err, message: 'BlogPost not found' });

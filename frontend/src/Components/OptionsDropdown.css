@@ -1,0 +1,28 @@
+.options-dropdown-btn {
+  background: white !important;
+  margin: 0px 5px !important;
+  text-transform: unset !important;
+}
+
+.btn-title {
+  width: 140px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 21px;
+  text-align: left;
+}
+
+.options-dropdown-menu {
+  border-radius: 0px !important;
+}
+
+.test {
+  max-width: 196px;
+  width: 196px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+}
