@@ -2,3 +2,8 @@
   margin: 100px auto;
   width: 50%;
 }
+
+textarea {
+  width: 100%;
+
+}

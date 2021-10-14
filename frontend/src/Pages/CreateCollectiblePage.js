@@ -7,6 +7,7 @@ import Button from '../Components/Button';
 import Input from '../Components/Input';
 import Label from '../Components/Label';
 import './ManageAccountPage.css';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 
 export default class CreateCollectiblePage extends Component {
@@ -48,14 +49,22 @@ export default class CreateCollectiblePage extends Component {
                             Edit
                         </button>
                     </div>
+
                     <form>
                         <Label title='Name' />
+
                         <Input />
                         <div style={{ marginBottom: '25px' }} />
+
                         <Label title='Description' />
-                        <Input />
+                        <div textbox>
+                            <TextareaAutosize
+                                minRows={5}
+                            />
+                        </div>
                         <div style={{ marginBottom: '25px' }} />
                     </form>
+
                     <Button
                         onClick={() => { console.log('hi') }}
                         label={'Submit'}
