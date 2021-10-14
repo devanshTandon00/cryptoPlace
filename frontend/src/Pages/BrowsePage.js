@@ -46,8 +46,15 @@ export default class BrowsePage extends Component {
       img: 'https://lh3.googleusercontent.com/alrw4OsjldeYC5WpJCfneeui2F4lNDU0xYLp80LA9horlf7wufhRG_2ln5u72PLaNh9tF_3WqSXZoCFTgIC9GatkKPobLQ5zYJgrug=w600',
       list_date: 'here'
     }
+    let card6 = {
+      name: 'Collectible 6',
+      description: 'This is a description',
+      price: '0.16',
+      img: 'https://lh3.googleusercontent.com/lGp0y5VfF0j0gpe9OcY34inan58xkJuH6i6vCtCempSbUBMsF0cXexO_rFJNixIQP3n27M0L1waBS8oUI_JayefpzmB9Lw3q5oq6=w600',
+      list_date: 'here'
+    }
 
-    let cards = [card1, card2, card3, card4, card5]
+    let cards = [card1, card2, card3, card4, card5, card6]
 
     return (
       <div className='BrowsePage'>
