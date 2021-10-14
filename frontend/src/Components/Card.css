@@ -11,17 +11,25 @@
   font-family: 'DM Sans', sans-serif;
   font-style: normal;
   line-height: 21px;
+  transition: transform 250ms;
+}
+
+.Card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
 }
 
 .card-name {
   font-size: 16px;
   font-weight: bold;
   color: black;
+  padding-bottom: 3px;
 }
 
 .card-description {
   font-size: 11px;
   font-weight: normal;
+  line-height: 18px;
   color: #C4C4C4;
   padding-bottom: 10px;
 }
