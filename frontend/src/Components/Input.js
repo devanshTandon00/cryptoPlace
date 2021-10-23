@@ -8,6 +8,7 @@ export default function Input(props) {
             className={props.className || 'input'}
             placeholder={props.placeholder}
             style={props.style}
+            onChange={props.onChange}
         />
     );
 }
