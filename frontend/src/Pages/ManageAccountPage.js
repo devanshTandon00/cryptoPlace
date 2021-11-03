@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Avatar } from '@material-ui/core';
+import { Avatar } from '@mui/material';
 import Banner from '../Components/Banner';
 import Button from '../Components/Button';
 import Input from '../Components/Input';

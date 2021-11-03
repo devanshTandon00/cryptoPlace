@@ -1,0 +1,28 @@
+.main-component {
+  border-bottom: 1.5px solid #c4c4c4;
+  padding: 48px;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.main-component .title {
+  padding: 10px;
+  font-size: 48px;
+  line-height: 62px;
+  color: black;
+}
+
+.main-component .subtitle {
+  padding: 20px;
+  font-size: 16px;
+  line-height: 21px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.main-component .buttons {
+  padding: 10px;
+  /* margin: auto; */
+}
+

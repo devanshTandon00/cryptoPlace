@@ -58,7 +58,6 @@ export default class BrowsePage extends Component {
 
     return (
       <div className='BrowsePage'>
-
         <div className='browse-options'>
           <div className='browse-results'>100,000 results</div>
           {/* <div className='options-spacer' /> */}

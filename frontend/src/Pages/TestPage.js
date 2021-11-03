@@ -1,11 +1,11 @@
 /* eslint-disable */
 import React, { Component, useState } from 'react';
-import 
-  { BottomNavigation, BottomNavigationAction, Breadcrumbs, Link,
-    Drawer, Button, ListItemIcon, ListItem, List, ListItemText,
-    Menu, MenuItem
-     } from '@material-ui/core';
-import { Favorite, LocationOn, Restore, Inbox, Mail } from '@material-ui/icons';
+// import 
+//   { BottomNavigation, BottomNavigationAction, Breadcrumbs, Link,
+//     Drawer, Button, ListItemIcon, ListItem, List, ListItemText,
+//     Menu, MenuItem
+//      } from '@material-ui/core';
+// import { Favorite, LocationOn, Restore, Inbox, Mail } from '@material-ui/icons';
 
 export default function TestPage() {
   // state = {  }
@@ -33,7 +33,7 @@ export default function TestPage() {
     setAnchorEl(null);
   };
 
-  return ( 
+  return (
     <div>
       {/* <BottomNavigation
         value={value}
@@ -47,8 +47,8 @@ export default function TestPage() {
         <BottomNavigationAction label="Favorites" icon={<Favorite />} />
         <BottomNavigationAction label="Nearby" icon={<LocationOn />} />
       </BottomNavigation> */}
-      
-      
+
+
       {/* <Breadcrumbs>
         <Link color="textPrimary" href="/" onClick={()=>{}}>
           Material-UI
@@ -60,8 +60,8 @@ export default function TestPage() {
           Material-UI
         </Link>
       </Breadcrumbs> */}
-      
-      
+
+
       {/* <Button onClick={toggleDrawer('top', true)}>
         Some Button
       </Button>
@@ -91,7 +91,7 @@ export default function TestPage() {
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu> */}
 
-      
+
     </div>
   );
 }

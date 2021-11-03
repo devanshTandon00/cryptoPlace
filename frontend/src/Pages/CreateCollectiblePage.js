@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import { Avatar } from '@material-ui/core';
+import { Avatar } from '@mui/material';
 import Banner from '../Components/Banner';
 import Button from '../Components/Button';
 import Input from '../Components/Input';
@@ -92,7 +90,7 @@ export default class CreateCollectiblePage extends Component {
                         <div style={{ marginBottom: '25px' }} />
 
                         <Label title='Description' value={this.state.description} onChange={this.changeDescription} />
-                        <div textbox>
+                        <div>
                             <TextareaAutosize
                                 minRows={5}
                                 id="descriptionInput"
