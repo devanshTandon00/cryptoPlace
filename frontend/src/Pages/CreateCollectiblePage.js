@@ -51,9 +51,6 @@ export default class CreateCollectiblePage extends Component {
         console.log("changed image from ", this.state.selectedFile, "to ", event.target.value)
     }
 
-    //Might need to change
-    //Might need to change
-    //Might need to change
     isFilled = () => {
         return this.state.name !== '' && this.state.price !== '' && this.state.description !== '' && this.state.selectedFile !== '';
     };
@@ -104,9 +101,6 @@ export default class CreateCollectiblePage extends Component {
                         <Input type='number' id="priceInput" value={this.state.price} onChange={this.changePrice} />
                         <div style={{ marginBottom: '25px' }} />
 
-                        {/* Fix This */}
-                        {/* Fix This */}
-                        {/* Fix This */}
                         <Label title='Description' />
                         <Input type="textarea" id="nameInput" value={this.state.description} onChange={this.changeDescription} />
                         {/* <div textbox>
