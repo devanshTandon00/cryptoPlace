@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Avatar } from '@mui/material';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import { Avatar } from '@material-ui/core';
 import Banner from '../Components/Banner';
 import Button from '../Components/Button';
 import Input from '../Components/Input';
@@ -13,7 +15,7 @@ export default class CreateCollectiblePage extends Component {
         super(props);
         this.state = {
             name: '',
-            price: 0,
+            price: '',
             description: '',
             selectedFile: ''
         };
@@ -24,28 +26,41 @@ export default class CreateCollectiblePage extends Component {
         console.log("hi")
 
         // Do storage stuff somehow
+        // Do storage stuff somehow
+        // Do storage stuff somehow
 
     }
 
     changeName = event => {
         this.setState({ name: event.target.value })
-        console.log("changed to ", event.target.value)
+        console.log("changed name from ", this.state.name, "to ", event.target.value)
     }
 
     changePrice = event => {
-        this.setState({ name: event.target.value })
-        console.log("changed to ", event.target.value)
+        this.setState({ price: event.target.value })
+        console.log("changed price from ", this.state.price, "to ", event.target.value)
     }
 
     changeDescription = event => {
-        this.setState({ name: event.target.value })
-        console.log("changed to ", event.target.value)
+        this.setState({ description: event.target.value })
+        console.log("changed description from ", this.state.description, "to ", event.target.value)
     }
 
     changeImage = event => {
-        this.setState({ name: event.target.value })
-        console.log("changed to ", event.target.value)
+        this.setState({ selectedFile: event.target.value })
+        console.log("changed image from ", this.state.selectedFile, "to ", event.target.value)
     }
+
+    //Might need to change
+    //Might need to change
+    //Might need to change
+    isFilled = () => {
+        return this.state.name !== '' && this.state.price !== '' && this.state.description !== '' && this.state.selectedFile !== '';
+    };
+
+    doNothing = () => {
+        console.log("Not Filled Out")
+    };
 
     render() {
         return (
@@ -89,13 +104,17 @@ export default class CreateCollectiblePage extends Component {
                         <Input type='number' id="priceInput" value={this.state.price} onChange={this.changePrice} />
                         <div style={{ marginBottom: '25px' }} />
 
-                        <Label title='Description' value={this.state.description} onChange={this.changeDescription} />
-                        <div>
+                        {/* Fix This */}
+                        {/* Fix This */}
+                        {/* Fix This */}
+                        <Label title='Description' />
+                        <Input type="textarea" id="nameInput" value={this.state.description} onChange={this.changeDescription} />
+                        {/* <div textbox>
                             <TextareaAutosize
                                 minRows={5}
                                 id="descriptionInput"
                             />
-                        </div>
+                        </div> */}
                         <div style={{ marginBottom: '25px' }} />
 
                         <Label title='Image' />
@@ -104,7 +123,14 @@ export default class CreateCollectiblePage extends Component {
                     </form>
 
                     <Button
-                        onClick={() => { this.uploadValues() }}
+                        onClick={() => {
+                            if (!this.isFilled()) {
+                                this.doNothing()
+                            }
+                            else {
+                                this.uploadValues()
+                            }
+                        }}
                         label={'Submit'}
                     />
 
