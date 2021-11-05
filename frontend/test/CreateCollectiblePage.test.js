@@ -12,8 +12,8 @@ describe('<CreateCollectiblePage />', () => {
     expect(wrapper.find('.CreateCollectiblePage')).toHaveLength(1);
   });
 
-  it('should render three <Input /> components', () => {
-    expect(wrapper.find(Input)).toHaveLength(3);
+  it('should render four <Input /> components', () => {
+    expect(wrapper.find(Input)).toHaveLength(4);
   });
 
   it('should render one <Button /> component', () => {
