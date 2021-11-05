@@ -1,4 +1,5 @@
 import 'jsdom-global/register';
+import "@babel/polyfill";
 import React from 'react';
 import { mount } from 'enzyme';
 import ManageAccountPage from '../src/Pages/ManageAccountPage';

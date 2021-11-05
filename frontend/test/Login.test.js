@@ -1,5 +1,5 @@
 import 'jsdom-global/register';
-import "@babel/polyfill"; //For async functions
+import "@babel/polyfill";
 import React from 'react';
 import { mount } from 'enzyme';
 import Login from '../src/Components/Authentication/Login';
