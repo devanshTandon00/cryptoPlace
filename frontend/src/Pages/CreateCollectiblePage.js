@@ -8,6 +8,7 @@ import Input from '../Components/Input';
 import Label from '../Components/Label';
 import './ManageAccountPage.css';
 // import TextareaAutosize from '@mui/material/TextareaAutosize';
+import { getCollectibles, addCollectible, deleteCollectible, editcollectible } from '../APIFunctions/Collectible';
 
 
 export default class CreateCollectiblePage extends Component {
@@ -21,34 +22,26 @@ export default class CreateCollectiblePage extends Component {
         };
     }
 
-    uploadValues = event => {
 
-        console.log("hi")
 
-        // Do storage stuff somehow
-        // Do storage stuff somehow
-        // Do storage stuff somehow
-
+    updateName = event => {
+        this.setState({ name: event })
+        // console.log("changed name from ", this.state.name, "to ", event.target.value)
     }
 
-    changeName = event => {
-        this.setState({ name: event.target.value })
-        console.log("changed name from ", this.state.name, "to ", event.target.value)
+    updatePrice = event => {
+        this.setState({ price: event })
+        // console.log("changed price from ", this.state.price, "to ", event.target.value)
     }
 
-    changePrice = event => {
-        this.setState({ price: event.target.value })
-        console.log("changed price from ", this.state.price, "to ", event.target.value)
+    updateDescription = event => {
+        this.setState({ description: event })
+        // console.log("changed description from ", this.state.description, "to ", event.target.value)
     }
 
-    changeDescription = event => {
-        this.setState({ description: event.target.value })
-        console.log("changed description from ", this.state.description, "to ", event.target.value)
-    }
-
-    changeImage = event => {
-        this.setState({ selectedFile: event.target.value })
-        console.log("changed image from ", this.state.selectedFile, "to ", event.target.value)
+    updateImage = event => {
+        this.setState({ selectedFile: event })
+        // console.log("changed image from ", this.state.selectedFile, "to ", event.target.value)
     }
 
     isFilled = () => {
@@ -58,6 +51,30 @@ export default class CreateCollectiblePage extends Component {
     doNothing = () => {
         console.log("Not Filled Out")
     };
+
+    resetInputs = () => {
+        this.setState({
+            name: '',
+            price: '',
+            description: '',
+            selectedFile: ''
+        });
+    };
+
+    uploadValues = async (event) => {
+
+        console.log("hi")
+        event.preventDefault();
+        const collectible = {
+            name: this.state.name,
+            price: this.state.price,
+            description: this.state.description,
+            selectedFile: this.state.selectedFile
+        }
+        const res = await addCollectible(collectible);
+        console.log('res', res);
+        this.resetInputs();
+    }
 
     render() {
         return (
@@ -94,15 +111,39 @@ export default class CreateCollectiblePage extends Component {
 
                     <form>
                         <Label title='Name' />
-                        <Input type='text' id="nameInput" value={this.state.name} onChange={this.changeName} />
+                        <Input
+                            type='text'
+                            id="nameInput"
+                            value={this.state.name}
+                            onChange={event => {
+                                this.updateName(event.target.value);
+                            }}
+                        // onChange={this.updateName} 
+                        />
                         <div style={{ marginBottom: '25px' }} />
 
                         <Label title='Price' />
-                        <Input type='number' id="priceInput" value={this.state.price} onChange={this.changePrice} />
+                        <Input
+                            type='number'
+                            id="priceInput"
+                            value={this.state.price}
+                            onChange={event => {
+                                this.updatePrice(event.target.value);
+                            }}
+                        // onChange={this.updatePrice} 
+                        />
                         <div style={{ marginBottom: '25px' }} />
 
                         <Label title='Description' />
-                        <Input type="textarea" id="nameInput" value={this.state.description} onChange={this.changeDescription} />
+                        <Input
+                            type="text"
+                            id="nameInput"
+                            value={this.state.description}
+                            onChange={event => {
+                                this.updateDescription(event.target.value);
+                            }}
+                        // onChange={this.updateDescription} 
+                        />
                         {/* <div textbox>
                             <TextareaAutosize
                                 minRows={5}
@@ -111,20 +152,29 @@ export default class CreateCollectiblePage extends Component {
                         </div> */}
                         <div style={{ marginBottom: '25px' }} />
 
-                        <Label title='Image' />
-                        <Input type='file' value={this.state.image} onChange={this.changeImage} />
+                        <Label title='Image - Copy Paste a Google Link Here' />
+                        <Input
+                            type='text'
+                            id="fileInput"
+                            value={this.state.image}
+                            onChange={event => {
+                                this.updateImage(event.target.value);
+                            }}
+                        // onChange={this.updateImage} 
+                        />
                         <div style={{ marginBottom: '25px' }} />
                     </form>
 
                     <Button
-                        onClick={() => {
-                            if (!this.isFilled()) {
-                                this.doNothing()
-                            }
-                            else {
-                                this.uploadValues()
-                            }
-                        }}
+                        // onClick={() => {
+                        //     if (!this.isFilled()) {
+                        //         this.doNothing()
+                        //     }
+                        //     else {
+                        //         this.uploadValues
+                        //     }
+                        // }}
+                        onClick={this.uploadValues}
                         label={'Submit'}
                     />
 

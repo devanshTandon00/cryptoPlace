@@ -22,8 +22,9 @@ export async function addCollectible(collectible) {
   const collectibleToAdd = {
     // Whatever attributes you need to pass in, example below
     name: collectible.name,
-    description: collectible.description,
     price: collectible.price,
+    description: collectible.description,
+    selectedFile: collectible.selectedFile,
     list_date: collectible.list_date
   };
   await axios

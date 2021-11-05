@@ -12,17 +12,21 @@ const CollectibleSchema = new Schema(
     //   type: String
     // },
     name: {
-      unique: true,
+      // unique: true,
       type: String
     },
     // collectible_type: {
     //   type: String
     // },
+    price: {
+      // type: Number
+      type: String
+    },
     description: {
       type: String
     },
-    price: {
-      type: Number
+    selectedFile: {
+      type: String
     },
     list_date: {
       type: String,
