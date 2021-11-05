@@ -1,6 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { editUser } from '../../APIFunctions/User'
 import Banner from '../Banner';
 import Button from '../Button';
 import Input from '../Input';
@@ -10,12 +10,12 @@ import Label from '../Label';
 export default function Login() {
   const history = useHistory();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const form = e.target;
     const user = {
-      username: form[0].value,
+      username: form[0].value.toLowerCase(),
       password: form[1].value,
     };
 
@@ -34,10 +34,21 @@ export default function Login() {
           return res.json();
         }
       })
-      .then((data) => {
+      .then(async (data) => {
         console.log("data", data);
         localStorage.setItem("token", data.token);
-        history.push("/");
+        const userWithToken = {
+          username: form[0].value.toLowerCase(),
+          token: data.token
+        }
+        const res = await editUser(userWithToken);
+        console.log(res);
+        if (res) {
+          localStorage.setItem("user", userWithToken.username);
+          localStorage.setItem("authenticated", 'true');
+          localStorage.setItem("firstSession", 'false');
+          history.push('/');
+        }
       })
       .catch((error) => alert("incorrect username or password"));
   };

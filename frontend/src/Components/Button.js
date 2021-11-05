@@ -6,7 +6,7 @@ export default class Button extends Component {
     const className = this.props.className || "button-styling"
     return (
       <React.Fragment>
-        {this.props.href == '' ?
+        {this.props.href === '' ?
           <button
             className={className}
             onClick={this.props.onClick}

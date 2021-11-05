@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Navbar.css";
 import Input from "./Input";
+import NavbarUserButton from "./NavbarUserButton";
 
 export default class Navbar extends Component {
   state = {};
@@ -29,16 +30,8 @@ export default class Navbar extends Component {
           <a href="/manage-account" className="options-text">
             Manage Account
           </a>
-          <a href="/register" className="options-text">
-            Register
-          </a>
-          <a href="/login" className="options-text">
-            Login
-          </a>
-          <a href="/profile">
-            <img className="profile-img" alt="unable to load" />
-          </a>
         </div>
+        <NavbarUserButton />
       </div>
     );
   }

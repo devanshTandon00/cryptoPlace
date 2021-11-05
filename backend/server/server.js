@@ -22,6 +22,7 @@ const config = require("../config/config.json");
 mongoose.connect(process.env.DB_URL || config.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true
 });
 
 //Check is mongoose is connected in your terminal

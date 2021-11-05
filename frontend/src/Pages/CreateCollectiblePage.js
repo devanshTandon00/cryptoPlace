@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+// import { makeStyles } from '@material-ui/core/styles';
+// import TextField from '@material-ui/core/TextField';
 import { Avatar } from '@material-ui/core';
 import Banner from '../Components/Banner';
 import Button from '../Components/Button';
 import Input from '../Components/Input';
 import Label from '../Components/Label';
 import './ManageAccountPage.css';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
+// import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 
 export default class CreateCollectiblePage extends Component {

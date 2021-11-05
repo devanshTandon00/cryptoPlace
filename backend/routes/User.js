@@ -102,7 +102,7 @@ router.post("/login", async (req, res) => {
         { expiresIn: 90000 },
         (err, token) => {
           if (err) return res.json({ message: err });
-          console.log("Tokaen", token);
+          // console.log("Token", token);
           return res.json({
             message: "success",
             token: token,
@@ -115,6 +115,51 @@ router.post("/login", async (req, res) => {
       });
     }
   });
+});
+
+router.post('/editUser', (req, res) => {
+  User.findOne({ username: req.body.username })
+    .then(user => {
+      // Whatever attributes you need to pass in, example below
+      user.username = req.body.username || user.username;
+      user.token = req.body.token || user.token;
+      user.save()
+        .then(ret => {
+          res.json(ret);
+        })
+        .catch(err => {
+          res.send(err);
+        }
+        );
+    })
+    .catch(err => {
+      res.send({ err, message: 'User not found' });
+    }
+    )
+});
+
+router.post('/findUserByToken', (req, res) => {
+  User.findOne({ token: req.body.token }).then(user => res.json(user));
+});
+
+router.post('/logout', (req, res) => {
+  User.findOne({ username: req.body.username })
+    .then(user => {
+      // Whatever attributes you need to pass in, example below
+      user.username = req.body.username || user.username;
+      user.token = undefined;
+      user.save()
+        .then(ret => {
+          res.json(ret);
+        })
+        .catch(err => {
+          res.send(err);
+        }
+        );
+    })
+    .catch(err => {
+      res.send({ err, message: 'User not found' });
+    });
 });
 
 module.exports = router;

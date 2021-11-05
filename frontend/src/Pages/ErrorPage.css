@@ -1,4 +1,4 @@
-.HomePage .main-component {
+.ErrorPage .main-component {
   border-bottom: 1.5px solid #c4c4c4;
   padding: 48px;
   text-align: center;
@@ -7,22 +7,23 @@
   font-weight: bold;
 }
 
-.HomePage .main-component .title {
+.ErrorPage .main-component .title {
   padding: 10px;
   font-size: 48px;
   line-height: 62px;
   color: black;
 }
 
-.HomePage .main-component .subtitle {
+.ErrorPage .main-component .subtitle {
+  margin: 0 auto;
+  /* width: 40%; */
+  max-width: 450px;
   padding: 20px;
   font-size: 16px;
   line-height: 21px;
   color: rgba(0, 0, 0, 0.7);
 }
 
-.HomePage .main-component .buttons {
+.ErrorPage .main-component .buttons {
   padding: 10px;
-  /* margin: auto; */
 }
-
