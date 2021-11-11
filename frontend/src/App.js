@@ -16,6 +16,7 @@ import UserProfilesPage from "./Pages/UserProfilesPage";
 import CreateCollectiblePage from "./Pages/CreateCollectiblePage";
 import Login from "./Components/Authentication/Login";
 import Register from "./Components/Authentication/Register";
+import Collectible from "./Pages/Collectible";
 
 export default class App extends Component {
   constructor(props) {
@@ -48,6 +49,7 @@ export default class App extends Component {
               />
               <Route path="/login" exact component={Login} />
               <Route path="/register" exact component={Register} />
+              <Route path="/browse/collectible" exact component={Collectible} />
             </Switch>
             {/* <Footer /> */}
           </div>

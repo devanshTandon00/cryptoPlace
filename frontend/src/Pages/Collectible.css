@@ -1,0 +1,67 @@
+body {
+  background: radial-gradient(
+    circle at 50% 50%,
+    #b0a11a,
+    #b3a420,
+    #baac2f,
+    #c4b848,
+    #d1c769,
+    #ded68f,
+    #ebe5b7,
+    #f5f2db,
+    #fcfcf5,
+    #ffffff
+  );
+}
+.flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+p {
+  opacity: 0.8;
+}
+.icon {
+  content: url("../Icons/backArrow.svg");
+  max-width: 21px;
+  max-height: 100%;
+}
+.icon:hover {
+  cursor: pointer;
+}
+.image {
+  order: 0;
+  padding: 10px;
+}
+
+.information {
+  display: flex;
+  order: 0;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.details {
+  display: flex;
+  justify-content: center;
+}
+
+.special {
+  padding-left: 5px;
+}
+
+.description {
+  margin: 0 auto;
+}
+
+.history {
+  width: 35%;
+}
+
+ul {
+  padding-left: 2%;
+}
+
+h3:hover {
+  cursor: pointer;
+}
