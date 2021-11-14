@@ -72,7 +72,7 @@ export default function Collectible() {
             <img src={collectible.img} alt=""></img>
           </div>
           <div className="information">
-            <div className="icon"></div>
+            <div className="icon" onClick={() => window.history.back()}></div>
             <div className="title">
               <h1>
                 {" "}
