@@ -61,11 +61,12 @@ export default class BrowsePage extends Component {
 
     let cards = [card1, card2, card3, card4, card5, card6];
     const linkStyle = {
-      padding: "10px 15px",
       marginLeft: "1%",
       marginTop: "1%",
       maxWidth: "18.8%",
       minWidth: "18.8%",
+      fontFamily: ["DM Sans, sans-serif"],
+      fontStyle: "normal",
     };
     return (
       <div className="BrowsePage">
