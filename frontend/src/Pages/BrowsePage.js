@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import OptionsDropdown from "../Components/OptionsDropdown";
 import Card from "../Components/Card";
 import "./BrowsePage.css";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
+import Collectible from "./Collectible";
 
 export default class BrowsePage extends Component {
   constructor(props) {
@@ -93,6 +94,8 @@ export default class BrowsePage extends Component {
             );
           })}
         </div>
+
+        <Route path="/browse/:name" exact component={Collectible} />
       </div>
     );
   }
