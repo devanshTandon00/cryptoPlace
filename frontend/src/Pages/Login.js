@@ -1,26 +1,27 @@
 import React from 'react';
-import { useEthers } from '@usedapp/core';
+import Web3 from 'web3';
 import { useHistory } from 'react-router';
 import './Login.css';
 
 export default function Login() {
   const history = useHistory();
-  const { activateBrowserWallet } = useEthers();
-  const handleLogin = async () => {
-    let err = false;
-    const onError = () => {
-      localStorage.setItem('loggedIn', 'false');
-      err = true;
-    }
-    const postActivation = () => {
-      if (!err) {
-        localStorage.setItem('loggedIn', 'true');
-        localStorage.setItem('addUser', 'true');
-        history.push('/');
+
+  const ethEnabled = async () => {
+    if (window.ethereum) {
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        if (accounts) {
+          localStorage.setItem('loggedIn', 'true');
+          localStorage.setItem('addUser', 'true');
+          history.push('/');
+          window.location.reload();
+        }
+      } catch (error) {
+        if (error.code === 4001) {
+          localStorage.setItem('loggedIn', 'false');
+        }
       }
     }
-    activateBrowserWallet((error) => { onError(error) })
-      .then(() => { postActivation() });
   }
 
   return (
@@ -32,7 +33,7 @@ export default function Login() {
         Connect with one of our supported providers.
       </div>
       <div className='providers'>
-        <div className='provider' onClick={handleLogin}>
+        <div className='provider' onClick={ethEnabled}>
           MetaMask
         </div>
       </div>
