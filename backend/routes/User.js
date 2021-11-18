@@ -117,29 +117,29 @@ router.post("/login", async (req, res) => {
   });
 });
 
-router.post('/editUser', (req, res) => {
-  User.findOne({ username: req.body.username })
-    .then(user => {
-      // Whatever attributes you need to pass in, example below
-      user.username = req.body.username || user.username;
-      user.token = req.body.token || user.token;
-      user.save()
-        .then(ret => {
-          res.json(ret);
-        })
-        .catch(err => {
-          res.send(err);
-        }
-        );
-    })
-    .catch(err => {
-      res.send({ err, message: 'User not found' });
-    }
-    )
-});
+// router.post('/editUser', (req, res) => {
+//   User.findOne({ username: req.body.username })
+//     .then(user => {
+//       // Whatever attributes you need to pass in, example below
+//       user.username = req.body.username || user.username;
+//       user.token = req.body.token || user.token;
+//       user.save()
+//         .then(ret => {
+//           res.json(ret);
+//         })
+//         .catch(err => {
+//           res.send(err);
+//         }
+//         );
+//     })
+//     .catch(err => {
+//       res.send({ err, message: 'User not found' });
+//     }
+//     )
+// });
 
-router.post('/findUserByToken', (req, res) => {
-  User.findOne({ token: req.body.token }).then(user => res.json(user));
+router.post('/findUserByAddress', (req, res) => {
+  User.findOne({ address: req.body.address }).then(user => res.json(user));
 });
 
 router.post('/logout', (req, res) => {
@@ -160,6 +160,51 @@ router.post('/logout', (req, res) => {
     .catch(err => {
       res.send({ err, message: 'User not found' });
     });
+});
+
+router.post('/addUser', async (req, res) => {
+  console.log(req.body, "add");
+  const user = req.body;
+  const userExists = await User.findOne({ address: user.address });
+
+  if (userExists) {
+    res.json({ message: "User already exists. Logging in as normal." });
+  } else {
+    const dbUser = new User({
+      address: user.address,
+    });
+
+    dbUser.save((error) => {
+      if (error) {
+        res.status(500).json({ msg: "Error!" });
+      } else {
+        res.status(200).json({
+          msg: "User has been saved!",
+        });
+      }
+    });
+  }
+});
+
+router.post('/editUser', (req, res) => {
+  User.findOne({ address: req.body.address })
+    .then(user => {
+      // Whatever attributes you need to pass in, example below
+      user.username = req.body.username || user.username;
+      user.email = req.body.email || user.email;
+      user.save()
+        .then(ret => {
+          res.json(ret);
+        })
+        .catch(err => {
+          res.send(err);
+        }
+        );
+    })
+    .catch(err => {
+      res.send({ err, message: 'User not found' });
+    }
+    )
 });
 
 module.exports = router;

@@ -3,22 +3,16 @@ const mongoose = require("mongoose");
 //Define schema
 const Schema = mongoose.Schema;
 const UserSchema = new Schema({
-  username: {
+  address: {
     type: String,
     required: true
+  },
+  username: {
+    type: String,
   },
   email: {
     type: String,
-    required: true
   },
-  password: {
-    type: String,
-    required: true
-  },
-  token: {
-    type: String,
-    required: false
-  }
 });
 
 //Define Data Model (data type in the database... name of schema: BlogPost, actual schema 2nd argument)
