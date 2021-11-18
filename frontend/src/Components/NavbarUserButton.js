@@ -15,6 +15,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import Logout from '@mui/icons-material/Logout';
 import Settings from '@mui/icons-material/Settings';
 
+
 export default function NavbarUserButton(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -26,159 +27,112 @@ export default function NavbarUserButton(props) {
   };
 
   const renderMenuItems = () => {
-    const auth = localStorage.getItem('authenticated');
+    const loggedIn = localStorage.getItem('loggedIn');
     const screenSize = window.innerWidth;
-    if (auth === 'true') {
-      if (screenSize <= 1300) {
+
+    const generalRoutes = (
+      <React.Fragment>
+        <a href='/blog-page' className='href'>
+          <MenuItem>
+            <ListItemIcon>
+              <LibraryBooksIcon fontSize="small" />
+            </ListItemIcon>
+            Blog Page
+          </MenuItem>
+        </a>
+        <a href='/browse' className='href'>
+          <MenuItem>
+            <ListItemIcon>
+              <ImageIcon fontSize="small" />
+            </ListItemIcon>
+            Browse
+          </MenuItem>
+        </a>
+        <a href='/create-collectible' className='href'>
+          <MenuItem>
+            <ListItemIcon>
+              <AddCircleOutlineIcon fontSize="small" />
+            </ListItemIcon>
+            Create Collectible
+          </MenuItem>
+        </a>
+      </React.Fragment>
+    );
+
+    const accountRoutes = (
+      <React.Fragment>
+        <a href='/profile' className='href'>
+          <MenuItem>
+            <ListItemIcon>
+              <AccountCircleIcon fontSize="small" />
+            </ListItemIcon>
+            Profile
+          </MenuItem>
+        </a>
+        <a href='/manage-account' className='href'>
+          <MenuItem>
+            <ListItemIcon>
+              <Settings fontSize="small" />
+            </ListItemIcon>
+            Manage Account
+          </MenuItem>
+        </a>
+      </React.Fragment>
+    );
+
+    const logout = (
+      <a href='/logout' className='href'>
+        <MenuItem>
+          <ListItemIcon>
+            <Logout fontSize="small" />
+          </ListItemIcon>
+          Logout
+        </MenuItem>
+      </a>
+    );
+
+    const login = (
+      <a href='/login' className='href'>
+        <MenuItem>
+          <ListItemIcon>
+            <LoginIcon fontSize="small" />
+          </ListItemIcon>
+          Login
+        </MenuItem>
+      </a>
+    );
+
+    if (loggedIn === 'true') {
+      if (screenSize <= 1300) { // auth and small screen
         return (
           <div>
-            <a href='/blog-page' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <LibraryBooksIcon fontSize="small" />
-                </ListItemIcon>
-                Blog Page
-              </MenuItem>
-            </a>
-            <a href='/browse' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <ImageIcon fontSize="small" />
-                </ListItemIcon>
-                Browse
-              </MenuItem>
-            </a>
-            <a href='/create-collectible' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <AddCircleOutlineIcon fontSize="small" />
-                </ListItemIcon>
-                Create Collectible
-              </MenuItem>
-            </a>
+            {generalRoutes}
             <Divider />
-            <a href='/profile' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <AccountCircleIcon fontSize="small" />
-                </ListItemIcon>
-                Profile
-              </MenuItem>
-            </a>
-            <a href='/manage-account' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <Settings fontSize="small" />
-                </ListItemIcon>
-                Manage Account
-              </MenuItem>
-            </a>
+            {accountRoutes}
             <Divider />
-            <a href='/logout' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <Logout fontSize="small" />
-                </ListItemIcon>
-                Logout
-              </MenuItem>
-            </a>
+            {logout}
           </div>);
       }
-      else {
+      else { //auth and large screen
         return (
           <div>
-            <a href='/profile' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <PersonIcon fontSize="small" />
-                </ListItemIcon>
-                Profile
-              </MenuItem>
-            </a>
-            <a href='/manage-account' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <Settings fontSize="small" />
-                </ListItemIcon>
-                Manage Account
-              </MenuItem>
-            </a>
+            {accountRoutes}
             <Divider />
-            <a href='/logout' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <Logout fontSize="small" />
-                </ListItemIcon>
-                Logout
-              </MenuItem>
-            </a>
+            {logout}
           </div>);
       }
     } else {
-      if (screenSize <= 1300) {
+      if (screenSize <= 1300) { // not auth and small screen
         return (
           <div>
-            <a href='/blog-page' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <LibraryBooksIcon fontSize="small" />
-                </ListItemIcon>
-                Blog Page
-              </MenuItem>
-            </a>
-            <a href='/browse' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <ImageIcon fontSize="small" />
-                </ListItemIcon>
-                Browse
-              </MenuItem>
-            </a>
-            <a href='/create-collectible' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <AddCircleOutlineIcon fontSize="small" />
-                </ListItemIcon>
-                Create Collectible
-              </MenuItem>
-            </a>
+            {generalRoutes}
             <Divider />
-            <a href='/register' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <PersonIcon fontSize="small" />
-                </ListItemIcon>
-                Register
-              </MenuItem>
-            </a>
-            <a href='/login' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <LoginIcon fontSize="small" />
-                </ListItemIcon>
-                Login
-              </MenuItem>
-            </a>
+            {login}
           </div>);
       } else {
         return (
           <div>
-            <a href='/register' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <PersonIcon fontSize="small" />
-                </ListItemIcon>
-                Register
-              </MenuItem>
-            </a>
-            <a href='/login' className='href'>
-              <MenuItem>
-                <ListItemIcon>
-                  <LoginIcon fontSize="small" />
-                </ListItemIcon>
-                Login
-              </MenuItem>
-            </a>
+            {login}
           </div>);
       }
     }

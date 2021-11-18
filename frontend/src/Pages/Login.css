@@ -1,0 +1,34 @@
+.Login {
+  padding: 20px;
+  margin: auto 25%;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.Login .header{
+  margin-top: 10px;
+  font-size: 24px;
+  color: black;
+}
+
+.Login .sub-title {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight:300;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.Login .providers {
+  border: 1px solid #C4C4C4;
+  margin-top: 20px;
+  color: black;
+}
+
+.Login .providers .provider {
+  padding: 16px;
+}
+
+.Login .providers .provider:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}

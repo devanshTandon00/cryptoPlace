@@ -9,7 +9,7 @@ export default function PrivateRoute({
     <Route
       {...rest}
       render={(props) =>
-        localStorage.getItem('authenticated') === 'true' ? (
+        localStorage.getItem('loggedIn') === 'true' ? (
           <Component {...props} />
         ) : (
           <Redirect to="/error" />
