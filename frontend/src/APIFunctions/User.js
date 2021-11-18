@@ -16,13 +16,13 @@ export async function getUsers() {
   return data;
 }
 
-export async function findUserByToken(token) {
+export async function findUserByAddress(address) {
   let data;
-  const userToken = {
-    token: token
+  const userAddress = {
+    address: address
   };
   await axios
-    .post('/user/findUserByToken', userToken)
+    .post('/user/findUserByAddress', userAddress)
     .then(res => {
       data = res.data;
     })
@@ -37,8 +37,7 @@ export async function findUserByToken(token) {
 export async function addUser(user) {
   let data;
   const userToAdd = {
-    // Whatever attributes you need to pass in, example below
-    // attr1: user.attr1
+    address: user.address
   };
   await axios
     .post('/user/addUser', userToAdd)
@@ -57,8 +56,9 @@ export async function addUser(user) {
 export async function editUser(user) {
   let data;
   const userToEdit = {
+    address: user.address,
     username: user.username,
-    token: user.token
+    email: user.email
   };
   await axios
     .post('/user/editUser', userToEdit)
