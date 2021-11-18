@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useEthers } from '@usedapp/core';
+import Web3 from 'web3';
 import { findUserByAddress, editUser } from '../APIFunctions/User';
 import { Avatar } from '@mui/material';
 import Banner from '../Components/Banner';
@@ -9,14 +9,17 @@ import Label from '../Components/Label';
 import './ManageAccountPage.css';
 
 export default function ManageAccountPage() {
-  const { account } = useEthers();
+  const [address, setAddress] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
 
   async function fetchUserInfo() {
-    const user = await findUserByAddress(account);
+    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+    const accounts = await web3.eth.getAccounts();
+    setAddress(accounts[0]);
+    const user = await findUserByAddress(accounts[0]);
     if (user) {
       setName(user.username);
       setEmail(user.email);
@@ -25,11 +28,11 @@ export default function ManageAccountPage() {
 
   useEffect(() => {
     fetchUserInfo();
-  }, [account]);
+  }, [address]);
 
   const onSubmit = async () => {
     const user = {
-      address: account,
+      address: address,
       username: nameInput,
       email: emailInput
     }

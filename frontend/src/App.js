@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useEthers } from '@usedapp/core'
+import Web3 from 'web3';
 import { addUser } from "./APIFunctions/User";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRoute from './PrivateRoute';
@@ -29,8 +29,6 @@ import Navbar from "./Components/Navbar";
 // import Footer from "./Components/Footer";
 
 export default function App() {
-  const { account, library } = useEthers();
-
   // componentDidMount = async () => {
   //   //sauce: https://dev.to/jacobedawson/build-a-web3-dapp-in-react-login-with-metamask-4chp
   //   // https://medium.com/coinmonks/web3-react-connect-users-to-metamask-or-any-wallet-from-your-frontend-241fd538ed39
@@ -63,8 +61,7 @@ export default function App() {
   //   // localStorage.clear();
   // }
 
-  const handleAddUser = async () => {
-    console.log('account:', account);
+  const handleAddUser = async (account) => {
     const user = {
       address: account
     }
@@ -74,16 +71,24 @@ export default function App() {
     }
   }
 
-  useEffect(() => {
-    if (account) {
+  const fetchBlockchain = async () => {
+    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+    const network = await web3.eth.net.getNetworkType(); // Network you're connected to
+    const accounts = await web3.eth.getAccounts(); // Array of accounts
+    if (accounts.length !== 0) {
       localStorage.setItem('authenticated', true);
+      if (localStorage.getItem('addUser') === 'true') {
+        console.log(accounts[0]);
+        handleAddUser(accounts[0]);
+        localStorage.setItem('addUser', 'false');
+      }
     }
+  }
 
-    if (localStorage.getItem('addUser') === 'true') {
-      handleAddUser();
-      localStorage.setItem('addUser', 'false');
-    }
-  });
+  useEffect(() => {
+    fetchBlockchain();
+    // localStorage.clear();
+  }, [fetchBlockchain]);
 
   return (
     <div>

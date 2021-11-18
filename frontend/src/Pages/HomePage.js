@@ -1,13 +1,11 @@
 import React from "react";
 // import { Jumbotron } from "reactstrap";
-import { ChainId, DAppProvider, useEtherBalance, useEthers, Config } from '@usedapp/core'
-import { formatEther } from '@ethersproject/units'
+// import { formatEther } from '@ethersproject/units'
 import Button from "../Components/Button"
 import './HomePage.css'
 
 export default function HomePage() {
-  const { account, deactivate } = useEthers();
-  const etherBalance = useEtherBalance(account);
+  // const etherBalance = useEtherBalance(account);
   return (
     //   <div>
     //   <Jumbotron>
@@ -42,8 +40,8 @@ export default function HomePage() {
         </div>
       </div>
       <div className='carousel'>
-        {account && <p>Account: {account}</p>}
-        {etherBalance && <p>Balance: {formatEther(etherBalance)}</p>}
+        {/* {account && <p>Account: {account}</p>}
+        {etherBalance && <p>Balance: {formatEther(etherBalance)}</p>} */}
         {/* <Button label="deactivate" onClick={() => { deactivate() }} /> */}
       </div>
     </div>
